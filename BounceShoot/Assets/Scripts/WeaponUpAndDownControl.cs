@@ -20,7 +20,7 @@ public class WeaponUpAndDownControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        m_RaisingValue = Input.GetAxis("Mouse Y");        
+        m_RaisingValue = -1 * Input.GetAxis("Mouse Y");        
     }
 
     private void FixedUpdate()
@@ -31,7 +31,6 @@ public class WeaponUpAndDownControl : MonoBehaviour {
     private void Raise()
     {
         float raise = m_RaisingValue * m_WeaponRaisingSpeed * Time.deltaTime;
-        Quaternion raiseRotation = Quaternion.Euler(raise, 0f, 0f);
-        m_RigidBody.MoveRotation(m_RigidBody.rotation * raiseRotation);
+        transform.RotateAround(transform.parent.position, transform.parent.right, raise);
     }
 }
