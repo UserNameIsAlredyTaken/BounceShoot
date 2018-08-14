@@ -53,6 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ChildrenComponentHealth.cs" />
+     <Compile Include="Assets\Scripts\HealthClass.cs" />
+     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\PlayerMovmentControl.cs" />
      <Compile Include="Assets\Scripts\ShellScript.cs" />
      <Compile Include="Assets\Scripts\Shooting.cs" />

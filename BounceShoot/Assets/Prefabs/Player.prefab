@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 82787354181840740}
   - component: {fileID: 114332886828685750}
   - component: {fileID: 114427106831783814}
+  - component: {fileID: 114994235312857668}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -545,6 +546,22 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &114994235312857668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1167369490898540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e04e1981a7ad824692416b484e5491f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StartingHealth: 100
+  m_Slider: {fileID: 0}
+  m_FillImage: {fileID: 0}
+  m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
+  m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!136 &136678213863078856
 CapsuleCollider:
   m_ObjectHideFlags: 1

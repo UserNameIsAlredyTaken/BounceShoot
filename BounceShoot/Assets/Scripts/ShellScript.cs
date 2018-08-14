@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShellScript : MonoBehaviour {
-
+    public LayerMask m_PlayerLayer;
     public float m_LifeTime = 15;
+    public float m_Damage = 20;
 
-    // Use this for initialization
+    
     void Start () {
         Destroy(gameObject, m_LifeTime);
-	}
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	private void OnCollisionEnter(Collision collision)
+    {
+        int colliderLayerMask = (int)Mathf.Pow(2, collision.gameObject.layer);//get the LayerMask number of the collider
+        if (colliderLayerMask == m_PlayerLayer.value)
+        {            
+            Rigidbody targetRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            targetRigidbody.GetComponent<HealthClass>().TakeDamage(m_Damage);
+            Destroy(gameObject);
+        }
+        
+    }
 }

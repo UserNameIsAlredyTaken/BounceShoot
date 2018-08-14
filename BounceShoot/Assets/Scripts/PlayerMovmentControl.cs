@@ -31,12 +31,10 @@ public class PlayerMovmentControl : MonoBehaviour {
         m_SidewardMovmentValue = 0f;
     }
     
-	// Use this for initialization
 	void Start () {
         //m_OriginalPitch = m_MovmentAudio.pitch;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
         m_ForwardMovmentValue = Input.GetAxis("Vertical");
         m_SidewardMovmentValue = Input.GetAxis("Horizontal");
@@ -89,8 +87,8 @@ public class PlayerMovmentControl : MonoBehaviour {
 
     private void Jump()
     {
-        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
-        Debug.Log(isGrounded);
+        //bool isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        //Debug.Log(isGrounded);
 
         if (m_JumpValue)
         {

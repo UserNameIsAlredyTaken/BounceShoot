@@ -12,13 +12,7 @@ public class Shooting : MonoBehaviour {
     public string m_FireButton = "Fire1";
 
     private bool m_Fired;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    
 	void Update () {
         if (Input.GetButtonDown(m_FireButton))
         {
