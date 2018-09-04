@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Shooting : MonoBehaviour {
+public class Shooting : NetworkBehaviour {
 
-    public Rigidbody m_Shell;
+    public GameObject m_Shell;
     public Transform m_FireTransform;
     public AudioSource m_ShootingSource;
     public AudioClip m_ShootingSound;
@@ -14,17 +15,22 @@ public class Shooting : MonoBehaviour {
     private bool m_Fired;
     
 	void Update () {
-        if (Input.GetButtonDown(m_FireButton))
+        if (isLocalPlayer)
         {
-            m_ShootingSource.clip = m_ShootingSound;
-            m_ShootingSource.Play();
-            Fire();
-        }
+            if (Input.GetButtonDown(m_FireButton))
+            {
+                m_ShootingSource.clip = m_ShootingSound;
+                m_ShootingSource.Play();
+                CmdFire();
+            }
+        }        
 	}
 
-    private void Fire()
+    [Command]
+    private void CmdFire()
     {
-        Rigidbody shellInstance = Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
-        shellInstance.velocity = m_ShootingForce * m_FireTransform.up;
+        GameObject shellInstance = (GameObject)Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation);
+        shellInstance.GetComponent<Rigidbody>().velocity = m_ShootingForce * m_FireTransform.up;
+        NetworkServer.Spawn(shellInstance);
     }
 }

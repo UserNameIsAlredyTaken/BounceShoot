@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 54714728926565780}
   - component: {fileID: 108958640341076884}
   - component: {fileID: 114326926864562326}
+  - component: {fileID: 114414766917671294}
+  - component: {fileID: 114732650551469240}
   m_Layer: 0
   m_Name: Shell
   m_TagString: Untagged
@@ -155,6 +157,59 @@ MonoBehaviour:
     m_Bits: 512
   m_LifeTime: 3
   m_Damage: 20
+--- !u!114 &114414766917671294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146168127002418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 82
+    i2: 165
+    i3: 47
+    i4: 42
+    i5: 82
+    i6: 82
+    i7: 212
+    i8: 168
+    i9: 162
+    i10: 188
+    i11: 22
+    i12: 109
+    i13: 140
+    i14: 232
+    i15: 67
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114732650551469240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146168127002418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!135 &135825232565623216
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -17,7 +17,7 @@ public class ShellScript : MonoBehaviour {
         int colliderLayerMask = (int)Mathf.Pow(2, collision.gameObject.layer);//get the LayerMask number of the collider
         if (colliderLayerMask == m_PlayerLayer.value)
         {            
-            Rigidbody targetRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            GameObject targetRigidbody = collision.gameObject;
             targetRigidbody.GetComponent<HealthClass>().TakeDamage(m_Damage);
             Destroy(gameObject);
         }
