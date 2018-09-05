@@ -21,8 +21,7 @@ public class PlayerMovmentControl : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         GetComponent<MeshRenderer>().material.color = Color.blue;
-        GameObject cam = GameObject.FindWithTag("MainCamera");
-        //cam.transform.SetPositionAndRotation(m_CamPosition.transform.position,m_CamPosition.transform.rotation);
+        GameObject cam = GameObject.FindWithTag("MainCamera");//setting player camera to a proper position
         cam.transform.parent = m_CamPerent.transform;
         cam.transform.localPosition = m_CamPosition.transform.position;
         cam.transform.localRotation = m_CamPosition.transform.rotation;

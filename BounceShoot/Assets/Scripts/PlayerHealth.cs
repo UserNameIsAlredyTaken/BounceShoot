@@ -5,16 +5,13 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class PlayerHealth : HealthClass {
-
+    
+    [SyncVar(hook = "SetHealthUI")]
+    public float m_CurrentHealth;
     public float m_StartingHealth = 100;
     public RectTransform m_Healthbar;
-//    public Image m_FillImage;
-//    public Color m_FullHealthColor = Color.green;
-//    public Color m_ZeroHealthColor = Color.red;
-    
-    [SyncVar]
-    private float m_CurrentHealth;
-    private bool m_Dead;
+
+    private NetworkStartPosition[] spawnPoints;
 
     private void Start()
     {
@@ -22,13 +19,16 @@ public class PlayerHealth : HealthClass {
         {
             child.gameObject.AddComponent<ChildrenComponentHealth>();
         }
+
+        if (isLocalPlayer)
+        {
+            spawnPoints = FindObjectsOfType<NetworkStartPosition>();
+        }
     }
 
     private void OnEnable()
     {
         m_CurrentHealth = m_StartingHealth;
-        m_Dead = false;
-        //SetHealthUI();
     }
 
     public override void TakeDamage(float amount)
@@ -36,25 +36,38 @@ public class PlayerHealth : HealthClass {
         if (isServer)
         {
             m_CurrentHealth -= amount;
-            SetHealthUI();
 
-            if(m_CurrentHealth <= 0 && !m_Dead)
+            if(m_CurrentHealth <= 0)
             {
                 OnDeath();
             } 
         }
     }
 
-    private void SetHealthUI()
+    private void SetHealthUI(float currentHealth)
     {
-        m_Healthbar.sizeDelta = new Vector2(m_CurrentHealth, m_Healthbar.sizeDelta.y);
-//        m_Slider.value = m_CurrentHealth;
-//        m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
+        m_Healthbar.sizeDelta = new Vector2(currentHealth, m_Healthbar.sizeDelta.y);
     }
 
     private void OnDeath()
     {
-        m_Dead = true;
-        gameObject.SetActive(false);
+        m_CurrentHealth = m_StartingHealth;
+        RpcRespawn();
+    }
+
+    [ClientRpc]
+    private void RpcRespawn()
+    {
+        if (isLocalPlayer)
+        {
+            Vector3 spawnPoint = Vector3.zero;//default spawn point
+
+            if (spawnPoints != null && spawnPoints.Length > 0)
+            {
+                spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+            }
+
+            transform.position = spawnPoint;
+        }
     }
 }

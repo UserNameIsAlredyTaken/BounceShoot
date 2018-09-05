@@ -187,8 +187,8 @@
 -define:UNITY_TEAM_LICENSE
 -define:UNITY_PRO_LICENSE
 -define:UNITY_POST_PROCESSING_STACK_V2
-Assets/net.cs
 Assets/Scripts/ChildrenComponentHealth.cs
+Assets/Scripts/FacingCam.cs
 Assets/Scripts/HealthClass.cs
 Assets/Scripts/PlayerHealth.cs
 Assets/Scripts/PlayerMovmentControl.cs
