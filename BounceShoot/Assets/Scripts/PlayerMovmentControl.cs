@@ -23,8 +23,7 @@ public class PlayerMovmentControl : NetworkBehaviour
         GetComponent<MeshRenderer>().material.color = Color.blue;
         GameObject cam = GameObject.FindWithTag("MainCamera");//setting player camera to a proper position
         cam.transform.parent = m_CamPerent.transform;
-        cam.transform.localPosition = m_CamPosition.transform.position;
-        cam.transform.localRotation = m_CamPosition.transform.rotation;
+        cam.transform.localPosition = Vector3.zero;
     }
 
     private void Awake()
