@@ -21,6 +21,18 @@ public class ShellScript : MonoBehaviour {
             targetRigidbody.GetComponent<HealthClass>().TakeDamage(m_Damage);
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        int colliderLayerMask = (int)Mathf.Pow(2, other.gameObject.layer);//get the LayerMask number of the collider
+        if (colliderLayerMask == m_PlayerLayer.value)
+        {            
+            GameObject targetRigidbody = other.gameObject;
+            targetRigidbody.GetComponent<HealthClass>().TakeDamage(m_Damage);
+            Destroy(gameObject);
+        }
         
+        throw new System.NotImplementedException();
     }
 }

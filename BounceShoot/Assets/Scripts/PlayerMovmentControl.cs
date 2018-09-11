@@ -10,13 +10,14 @@ public class PlayerMovmentControl : NetworkBehaviour
     public GameObject m_CamPosition;
     public float m_Speed = 10f;
     public float m_TurnSpeed = 180f;
-//    public float m_JumpSpeed = 10f;
+    public float m_JumpSpeed = 10f;
     
     private Rigidbody m_Rigidbody;
     private float m_ForwardMovmentValue;
     private float m_SidewardMovmentValue;
     private float m_TurnValue;
-//    private bool m_JumpValue;
+    private bool m_JumpValue;
+    private float m_DistToGround;
 
     public override void OnStartLocalPlayer()
     {
@@ -29,6 +30,7 @@ public class PlayerMovmentControl : NetworkBehaviour
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_DistToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
     private void OnEnable()
@@ -43,7 +45,7 @@ public class PlayerMovmentControl : NetworkBehaviour
             m_ForwardMovmentValue = Input.GetAxis("Vertical");
             m_SidewardMovmentValue = Input.GetAxis("Horizontal");
             m_TurnValue = Input.GetAxis("Mouse X");
-//            m_JumpValue = Input.GetButtonDown("Jump");
+            m_JumpValue = Input.GetButtonDown("Jump");
         }        
 	}
 
@@ -51,7 +53,9 @@ public class PlayerMovmentControl : NetworkBehaviour
     {
         Move();
         Turn();
-//        Jump();
+        Jump();
+        
+        Debug.Log("Velocity: " + m_Rigidbody.velocity + " Angular vel: " + m_Rigidbody.angularVelocity);
     }
 
     private void Move()
@@ -67,11 +71,16 @@ public class PlayerMovmentControl : NetworkBehaviour
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
     }
 
-//    private void Jump()
-//    {
-//        if (m_JumpValue)
-//        {
-//            m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpSpeed, m_Rigidbody.velocity.z);
-//        }
-//    }
+    private void Jump()
+    {
+        if (m_JumpValue && isOnFloor())
+        {
+            m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpSpeed, m_Rigidbody.velocity.z);
+        }
+    }
+
+    private bool isOnFloor()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, m_DistToGround + 0.1f);
+    }
 }
