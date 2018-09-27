@@ -374,7 +374,7 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1167369490898540}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -501,16 +501,16 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 2
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
+  m_InterpolateRotation: 0
+  m_InterpolateMovement: 1.3
 --- !u!114 &114221293058480104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -535,12 +535,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Target: {fileID: 4929516785119192}
   m_ChildIndex: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 1
   m_RotationSyncCompression: 0
   m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
+  m_InterpolateRotation: 0.6
+  m_InterpolateMovement: 0
 --- !u!114 &114332886828685750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,6 +556,7 @@ MonoBehaviour:
   m_CamPosition: {fileID: 1449321335701594}
   m_Speed: 10
   m_TurnSpeed: 180
+  m_JumpSpeed: 10
 --- !u!114 &114427106831783814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -571,7 +572,7 @@ MonoBehaviour:
   m_FireTransform: {fileID: 4384156024995324}
   m_ShootingSource: {fileID: 82787354181840740}
   m_ShootingSound: {fileID: 8300000, guid: 7c6f8ff4908a6d24a8b41cd0ee4a7a01, type: 3}
-  m_ShootingForce: 10
+  m_ShootingForce: 20
   m_FireButton: Fire1
 --- !u!114 &114461322412024174
 MonoBehaviour:

@@ -32,7 +32,5 @@ public class ShellScript : MonoBehaviour {
             targetRigidbody.GetComponent<HealthClass>().TakeDamage(m_Damage);
             Destroy(gameObject);
         }
-        
-        throw new System.NotImplementedException();
     }
 }

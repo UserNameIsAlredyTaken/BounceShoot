@@ -182,7 +182,7 @@ Prefab:
     - target: {fileID: 114680810778119508, guid: 189d79e55b5025e4483a855bd95bf8bd,
         type: 2}
       propertyPath: m_UseSimulator
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114680810778119508, guid: 189d79e55b5025e4483a855bd95bf8bd,
         type: 2}
@@ -197,6 +197,16 @@ Prefab:
     - target: {fileID: 114680810778119508, guid: 189d79e55b5025e4483a855bd95bf8bd,
         type: 2}
       propertyPath: m_PlayerSpawnMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680810778119508, guid: 189d79e55b5025e4483a855bd95bf8bd,
+        type: 2}
+      propertyPath: m_PacketLossPercentage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680810778119508, guid: 189d79e55b5025e4483a855bd95bf8bd,
+        type: 2}
+      propertyPath: m_DontDestroyOnLoad
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
