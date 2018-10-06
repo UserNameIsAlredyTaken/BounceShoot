@@ -17,11 +17,8 @@ public class WeaponUpAndDownControl : NetworkBehaviour {
     private void Awake(){
         m_WeaponTransform = transform.GetChild(0);
     }
-    
-	void Start (){		
-	}
 	
-	void Update () {
+	private void Update () {
         if (isLocalPlayer)
         {
             m_RaisingValue = -1 * Input.GetAxis("Mouse Y");
@@ -35,7 +32,7 @@ public class WeaponUpAndDownControl : NetworkBehaviour {
 
     private void Raise()
     {
-        float raiseValue = m_RaisingValue * m_WeaponRaisingSpeed * Time.deltaTime;    
+        var raiseValue = m_RaisingValue * m_WeaponRaisingSpeed * Time.deltaTime;    
         
         if ((raiseValue + m_WeaponTransform.eulerAngles.x) <= m_BotAngelConstraint || (raiseValue + m_WeaponTransform.eulerAngles.x) >= m_TopAngelConstraint) 
         {

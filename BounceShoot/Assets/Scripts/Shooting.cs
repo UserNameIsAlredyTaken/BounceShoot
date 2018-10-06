@@ -20,7 +20,7 @@ public class Shooting : NetworkBehaviour {
             if (Input.GetButtonDown(m_FireButton))
             {
                 m_ShootingSource.clip = m_ShootingSound;
-                m_ShootingSource.Play();
+                //m_ShootingSource.Play();
                 CmdFire();
             }
         }        

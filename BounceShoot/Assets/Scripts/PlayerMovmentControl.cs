@@ -54,8 +54,6 @@ public class PlayerMovmentControl : NetworkBehaviour
         Move();
         Turn();
         Jump();
-        
-        Debug.Log("Velocity: " + m_Rigidbody.velocity + " Angular vel: " + m_Rigidbody.angularVelocity);
     }
 
     private void Move()

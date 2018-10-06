@@ -14,8 +14,13 @@
           <e p="PlayerMovmentControl.cs" t="Include" />
           <e p="ShellScript.cs" t="Include" />
           <e p="Shooting.cs" t="Include" />
+          <e p="TestScripts" t="Include">
+            <e p="PlayerMovmentControlTest.cs" t="Include" />
+            <e p="WeaponUpAndDownControlTest.cs" t="Include" />
+          </e>
           <e p="WeaponUpAndDownControl.cs" t="Include" />
         </e>
+        <e p="test.cs" t="Include" />
       </e>
       <e p="BounceShoot.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />
