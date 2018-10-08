@@ -25,6 +25,9 @@ public class PlayerMovmentControl : NetworkBehaviour
         GameObject cam = GameObject.FindWithTag("MainCamera");//setting player camera to a proper position
         cam.transform.parent = m_CamPerent.transform;
         cam.transform.localPosition = Vector3.zero;
+        cam.transform.localRotation = new Quaternion(cam.transform.parent.rotation.x,
+                                                     cam.transform.parent.rotation.y,
+                                                     cam.transform.parent.rotation.z, 1);
     }
 
     private void Awake()

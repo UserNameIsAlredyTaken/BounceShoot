@@ -64,8 +64,7 @@
     <Compile Include="Assets\Scripts\PlayerMovmentControl.cs" />
     <Compile Include="Assets\Scripts\ShellScript.cs" />
     <Compile Include="Assets\Scripts\Shooting.cs" />
-    <Compile Include="Assets\Scripts\TestScripts\PlayerMovmentControlTest.cs" />
-    <Compile Include="Assets\Scripts\TestScripts\WeaponUpAndDownControlTest.cs" />
+    <Compile Include="Assets\Scripts\Test\PlayerMovmentControlTest.cs" />
     <Compile Include="Assets\Scripts\WeaponUpAndDownControl.cs" />
     <Compile Include="Assets\test.cs" />
     <Reference Include="UnityEditor.StandardEvents">
