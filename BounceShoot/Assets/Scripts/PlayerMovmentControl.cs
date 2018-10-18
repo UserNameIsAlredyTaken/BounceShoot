@@ -18,6 +18,7 @@ public class PlayerMovmentControl : NetworkBehaviour
     private float m_TurnValue;
     private bool m_JumpValue;
     private float m_DistToGround;
+    private const float RAYCAST_SPHERER_RADIUS = 0.5f;
 
     public override void OnStartLocalPlayer()
     {
@@ -80,6 +81,7 @@ public class PlayerMovmentControl : NetworkBehaviour
 
     private bool isOnFloor()
     {
-        return Physics.Raycast(transform.position, Vector3.down, m_DistToGround + 0.1f);
+        RaycastHit hitInfo;
+        return Physics.SphereCast(transform.position, RAYCAST_SPHERER_RADIUS, Vector3.down, out hitInfo, m_DistToGround - RAYCAST_SPHERER_RADIUS + 0.1f);
     }
 }
