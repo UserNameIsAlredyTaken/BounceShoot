@@ -20,13 +20,21 @@ public class PlayerMovmentControl : NetworkBehaviour
     private float m_DistToGround;
     private const float RAYCAST_SPHERER_RADIUS = 0.5f;
 
+
+    private float maxDistance = 3;
+    private Vector3 origin;
+    private Vector3 direction;
+    private float currentHitDistance;
+    
+    
+
     public override void OnStartLocalPlayer()
     {
         GetComponent<MeshRenderer>().material.color = Color.blue;
-        GameObject cam = GameObject.FindWithTag("MainCamera");//setting player camera to a proper position
-        cam.transform.parent = m_CamPerent.transform;
-        cam.transform.localPosition = Vector3.zero;
-        cam.transform.localRotation = cam.transform.parent.rotation;
+//        GameObject cam = GameObject.FindWithTag("MainCamera");//setting player camera to a proper position
+//        cam.transform.parent = m_CamPerent.transform;
+//        cam.transform.localPosition = Vector3.zero;
+//        cam.transform.localRotation = cam.transform.parent.rotation;
     }
 
     private void Awake()
@@ -56,6 +64,7 @@ public class PlayerMovmentControl : NetworkBehaviour
         Move();
         Turn();
         Jump();
+       // CamControle();
     }
 
     private void Move()
@@ -84,4 +93,26 @@ public class PlayerMovmentControl : NetworkBehaviour
         RaycastHit hitInfo;
         return Physics.SphereCast(transform.position, RAYCAST_SPHERER_RADIUS, Vector3.down, out hitInfo, m_DistToGround - RAYCAST_SPHERER_RADIUS + 0.1f);
     }
+
+    private void CamControle()
+    {
+        origin = transform.position;
+        direction = -transform.forward;
+        RaycastHit hit;
+        if (Physics.SphereCast(origin,RAYCAST_SPHERER_RADIUS, direction, out hit, maxDistance))
+        {
+            currentHitDistance = hit.distance;
+        }
+        else
+        {
+            currentHitDistance = maxDistance;
+        }
+    }
+
+//    private void OnDrawGizmos()
+//    {
+//        Gizmos.color = Color.red;
+//        Debug.DrawLine(origin, origin + direction * currentHitDistance);
+//        Gizmos.DrawWireSphere(origin + direction * currentHitDistance, RAYCAST_SPHERER_RADIUS);
+//    }
 }

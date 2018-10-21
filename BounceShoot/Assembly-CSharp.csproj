@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CamControl.cs" />
     <Compile Include="Assets\Scripts\ChildrenComponentHealth.cs" />
     <Compile Include="Assets\Scripts\FacingCam.cs" />
     <Compile Include="Assets\Scripts\HealthClass.cs" />
