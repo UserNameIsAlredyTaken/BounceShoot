@@ -7,32 +7,44 @@ using UnityEngine.Networking;
 public class CamControl : NetworkBehaviour
 {
     public float maxDistance = 2.2f;
-    public float xCoordinate = -1.2f;
-    public float yCoordinate = -1.4f;
-    public float zCoordinate = -3.4f;
+    public float xCamRay = -1.2f;
+    public float yCamRay = -1.4f;
+    public float zCamRay = -3.4f;
+
+    public float camCastOriginDistance = 0.2f;
+    public float xCamOrigin = 0.2f;
+    public float yCamOrigin = 0f;
+    public float zCamOrigin = 0.2f;
+    public float camSphereRadius = 0.5f;
     
-    
-    private const float RAYCAST_SPHERER_RADIUS = 0.5f;
-    private Vector3 origin;
-    private Vector3 direction;
+    private Vector3 camCastOrigin;
+    private Vector3 camCastRay;
     private float currentHitDistance;
     private GameObject cam;
+    private const int LOCAL_PLAYER_LAYER = 10;
+    private int layerMask = ~(1 << LOCAL_PLAYER_LAYER); //all layers except local player
     
     private void Start()
     {
-        cam = GameObject.FindWithTag("MainCamera");//setting player camera to a proper position
+        cam = GameObject.FindWithTag("MainCamera");
         cam.transform.parent = transform;
-        cam.transform.localRotation = cam.transform.parent.rotation;
+        cam.transform.localRotation = Quaternion.Inverse(cam.transform.parent.rotation);
     }
 
     private void FixedUpdate()
     {
-        origin = transform.position;
+        camCastOrigin = xCamOrigin * transform.forward 
+                 + yCamOrigin * transform.right 
+                 + zCamOrigin * transform.up;
+        camCastOrigin.Normalize();
         
-        direction =  xCoordinate * transform.forward + yCoordinate * transform.right + zCoordinate * transform.up;
-        direction.Normalize();
+        camCastRay = xCamRay * transform.forward
+                    + yCamRay * transform.right 
+                    + zCamRay * transform.up;
+        camCastRay.Normalize();
+        
         RaycastHit hit;
-        if (Physics.SphereCast(origin,RAYCAST_SPHERER_RADIUS, new Vector3(direction.x, direction.y, direction.z), out hit, maxDistance))
+        if (Physics.SphereCast(transform.position + camCastOrigin * camCastOriginDistance,camSphereRadius, new Vector3(camCastRay.x, camCastRay.y, camCastRay.z), out hit, maxDistance, layerMask))
         {
             currentHitDistance = hit.distance;
         }
@@ -40,13 +52,14 @@ public class CamControl : NetworkBehaviour
         {
             currentHitDistance = maxDistance;
         }
-        cam.transform.localPosition = direction * currentHitDistance;
+        cam.transform.position = transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance;
     }
     
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Debug.DrawLine(origin, origin + direction * currentHitDistance);
-        Gizmos.DrawWireSphere(origin + direction * currentHitDistance, RAYCAST_SPHERER_RADIUS);
+        Debug.DrawLine(transform.position, transform.position + camCastOrigin * camCastOriginDistance);
+        Debug.DrawLine(transform.position + camCastOrigin * camCastOriginDistance, transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance);
+        Gizmos.DrawWireSphere(transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance, camSphereRadius);
     }
 }
