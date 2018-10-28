@@ -2,9 +2,9 @@
 -target:library
 -nowarn:0169
 -langversion:4
--out:Temp/com.unity.postprocessing.Editor.dll
+-out:Temp/Unity.TextMeshPro.Editor.dll
 -nostdlib
--r:Library/ScriptAssemblies/com.unity.postprocessing.Runtime.dll
+-r:Library/ScriptAssemblies/Unity.TextMeshPro.dll
 -r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll"
 -r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll"
 -r:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll"
@@ -70,6 +70,9 @@
 -r:"C:\Program Files\Unity\Editor\Data\Managed/Unity.Locator.dll"
 -r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
 -r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll"
+-r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll"
 -r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll"
 -r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll"
 -r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll"
@@ -109,7 +112,7 @@
 -define:UNITY_2017_4_OR_NEWER
 -define:UNITY_2018_1_OR_NEWER
 -define:UNITY_2018_2_OR_NEWER
--define:UNITY_2018_2_8
+-define:UNITY_2018_2_14
 -define:UNITY_2018_2
 -define:UNITY_2018
 -define:PLATFORM_ARCH_64
@@ -198,39 +201,43 @@
 -define:UNITY_TEAM_LICENSE
 -define:UNITY_PRO_LICENSE
 -define:UNITY_POST_PROCESSING_STACK_V2
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Attributes/DecoratorAttribute.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Attributes/PostProcessEditorAttribute.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/BaseEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Decorators/AttributeDecorator.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Decorators/Decorators.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Decorators/TrackballDecorator.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/EffectListEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/AmbientOcclusionEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/AutoExposureEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/BloomEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/ChromaticAberrationEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/ColorGradingEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/DefaultPostProcessEffectEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/DepthOfFieldEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/LensDistortionEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/ScreenSpaceReflectionsEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Effects/VignetteEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/PostProcessDebugEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/PostProcessEffectBaseEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/PostProcessEffectEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/PostProcessLayerEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/PostProcessProfileEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/PostProcessVolumeEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Tools/CubeLutAssetFactory.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Tools/CubeLutAssetImporter.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Tools/DefineSetter.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Tools/ProfileFactory.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Tools/ResourceAssetFactory.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Tools/VolumeFactory.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Utils/CurveEditor.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Utils/EditorUtilities.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Utils/GlobalSettings.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Utils/PostProcessShaderIncludePath.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Utils/SerializedParameterOverride.cs
-C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.postprocessing@2.0.3-preview/PostProcessing/Editor/Utils/Styling.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/DropdownOptionListDrawer.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/EditorCoroutine.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/GlyphInfoDrawer.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/KerningPairDrawer.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/SpriteInfoDrawer.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_BaseShaderGUI.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_BitmapShaderGUI.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_ColorGradientAssetMenu.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_ColorGradientEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_DropdownEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_EditorPanel.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_EditorUtility.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_FontAssetEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_InputFieldEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_MeshRendererEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_PackageUtilities.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_PostBuildProcessHandler.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_ProjectTextSettings.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_ResourcesLoader.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_SDFShaderGUI.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_SettingsEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_SpriteAssetEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_SpriteAssetImporter.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_SpriteAssetMenu.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_StyleAssetMenu.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_StyleSheetEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_SubMesh_Editor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_SubMeshUI_Editor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_UiEditorPanel.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMP_UIStyleManager.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_ContextMenus.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_CreateObjectMenu.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_EditorShaderUtilities.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_FontAssetCreatorWindow.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_FontPlugin.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_SDFMaterialEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_SortingLayerHelper.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_TextContainerEditor.cs
+C:/Users/danil/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.textmeshpro@1.2.4/Scripts/Editor/TMPro_TexturePostProcessor.cs
 -lib:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api"

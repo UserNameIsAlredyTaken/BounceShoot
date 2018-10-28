@@ -6,32 +6,34 @@ using UnityEngine.Networking;
 
 public class CamControl : NetworkBehaviour
 {
-    public float maxDistance = 2.2f;
-    public float xCamRay = -1.2f;
-    public float yCamRay = -1.4f;
-    public float zCamRay = -3.4f;
+    public float maxDistance = 2f;
+    public float xCamRay = -1f;
+    public float yCamRay = -1.5f;
+    public float zCamRay = -2.3f;
 
-    public float camCastOriginDistance = 0.2f;
-    public float xCamOrigin = 0.2f;
+    public float camCastOriginDistance = 0.7f;
+    public float xCamOrigin = 0.12f;
     public float yCamOrigin = 0f;
-    public float zCamOrigin = 0.2f;
-    public float camSphereRadius = 0.5f;
+    public float zCamOrigin = -1f;
+    public float camSphereRadius = 0.455f;
     
     private Vector3 camCastOrigin;
     private Vector3 camCastRay;
     private float currentHitDistance;
-    private GameObject cam;
+    private Camera cam;
     private const int LOCAL_PLAYER_LAYER = 10;
     private int layerMask = ~(1 << LOCAL_PLAYER_LAYER); //all layers except local player
+    private int defaultCullingMask;
     
     private void Start()
     {
-        cam = GameObject.FindWithTag("MainCamera");
+        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         cam.transform.parent = transform;
         cam.transform.localRotation = Quaternion.Inverse(cam.transform.parent.rotation);
+        defaultCullingMask = cam.cullingMask;
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         camCastOrigin = xCamOrigin * transform.forward 
                  + yCamOrigin * transform.right 
@@ -53,6 +55,16 @@ public class CamControl : NetworkBehaviour
             currentHitDistance = maxDistance;
         }
         cam.transform.position = transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance;
+
+        //make local player invisible if camera touches it
+        if (Physics.CheckSphere(transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance,camSphereRadius, 1 << LOCAL_PLAYER_LAYER))
+        {
+            cam.cullingMask = layerMask;
+        }
+        else
+        {
+            cam.cullingMask = defaultCullingMask;
+        }
     }
     
     private void OnDrawGizmos()

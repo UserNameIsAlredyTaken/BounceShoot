@@ -568,10 +568,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb27d89c24f9164fb677a0dd0f46e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 2.2
-  xCoordinate: -1.2
-  yCoordinate: -1.4
-  zCoordinate: -3.4
+  maxDistance: 2
+  xCamRay: -1
+  yCamRay: -1.5
+  zCamRay: -2.3
+  camCastOriginDistance: 0.7
+  xCamOrigin: 0.12
+  yCamOrigin: 0
+  zCamOrigin: -1
+  camSphereRadius: 0.455
 --- !u!114 &114541118069740012
 MonoBehaviour:
   m_ObjectHideFlags: 1
