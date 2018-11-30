@@ -57,16 +57,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CamControl.cs" />
-    <Compile Include="Assets\Scripts\ChildrenComponentHealth.cs" />
-    <Compile Include="Assets\Scripts\FacingCam.cs" />
-    <Compile Include="Assets\Scripts\HealthClass.cs" />
-    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovmentControl.cs" />
-    <Compile Include="Assets\Scripts\ShellScript.cs" />
-    <Compile Include="Assets\Scripts\Shooting.cs" />
-    <Compile Include="Assets\Scripts\WeaponUpAndDownControl.cs" />
+    <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
+    <Compile Include="Assets\Scripts\ApplicationManager.cs" />
+    <Compile Include="Assets\Scripts\ChangeColor.cs" />
+    <Compile Include="Assets\Scripts\DragMe.cs" />
+    <Compile Include="Assets\Scripts\DragPanel.cs" />
+    <Compile Include="Assets\Scripts\DropMe.cs" />
+    <Compile Include="Assets\Scripts\My\CamControl.cs" />
+    <Compile Include="Assets\Scripts\My\ChildrenComponentHealth.cs" />
+    <Compile Include="Assets\Scripts\My\FacingCam.cs" />
+    <Compile Include="Assets\Scripts\My\HealthClass.cs" />
+    <Compile Include="Assets\Scripts\My\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\My\PlayerMovmentControl.cs" />
+    <Compile Include="Assets\Scripts\My\ShellScript.cs" />
+    <Compile Include="Assets\Scripts\My\Shooting.cs" />
+    <Compile Include="Assets\Scripts\My\WeaponUpAndDownControl.cs" />
+    <Compile Include="Assets\Scripts\PanelManager.cs" />
+    <Compile Include="Assets\Scripts\ResizePanel.cs" />
+    <Compile Include="Assets\Scripts\ScrollDetailTexture.cs" />
+    <Compile Include="Assets\Scripts\ShowSliderValue.cs" />
+    <Compile Include="Assets\Scripts\TiltWindow.cs" />
     <Compile Include="Assets\test.cs" />
+    <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
+    <None Include="Assets\Textures and Sprites\SF UI\Background\LICENSE.txt" />
+    <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/danil/Desktop/BounceShoot/BounceShoot/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -6,18 +6,46 @@
     <e p="C:\Users\danil\Desktop\BounceShoot\BounceShoot" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Fonts" t="Include">
+          <e p="Jupiter" t="Include">
+            <e p="LICENSE.txt" t="Include" />
+          </e>
+        </e>
+        <e p="Materials" t="Include">
+          <e p="UI-Default-No-Alpha.shader" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
-          <e p="CamControl.cs" t="Include" />
-          <e p="ChildrenComponentHealth.cs" t="Include" />
-          <e p="FacingCam.cs" t="Include" />
-          <e p="HealthClass.cs" t="Include" />
-          <e p="PlayerHealth.cs" t="Include" />
-          <e p="PlayerMovmentControl.cs" t="Include" />
-          <e p="ShellScript.cs" t="Include" />
-          <e p="Shooting.cs" t="Include" />
-          <e p="WeaponUpAndDownControl.cs" t="Include" />
+          <e p="ActiveStateToggler.cs" t="Include" />
+          <e p="ApplicationManager.cs" t="Include" />
+          <e p="ChangeColor.cs" t="Include" />
+          <e p="DragMe.cs" t="Include" />
+          <e p="DragPanel.cs" t="Include" />
+          <e p="DropMe.cs" t="Include" />
+          <e p="My" t="Include">
+            <e p="CamControl.cs" t="Include" />
+            <e p="ChildrenComponentHealth.cs" t="Include" />
+            <e p="FacingCam.cs" t="Include" />
+            <e p="HealthClass.cs" t="Include" />
+            <e p="PlayerHealth.cs" t="Include" />
+            <e p="PlayerMovmentControl.cs" t="Include" />
+            <e p="ShellScript.cs" t="Include" />
+            <e p="Shooting.cs" t="Include" />
+            <e p="WeaponUpAndDownControl.cs" t="Include" />
+          </e>
+          <e p="PanelManager.cs" t="Include" />
+          <e p="ResizePanel.cs" t="Include" />
+          <e p="ScrollDetailTexture.cs" t="Include" />
+          <e p="ShowSliderValue.cs" t="Include" />
+          <e p="TiltWindow.cs" t="Include" />
         </e>
         <e p="test.cs" t="Include" />
+        <e p="Textures and Sprites" t="Include">
+          <e p="SF UI" t="Include">
+            <e p="Background" t="Include">
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+        </e>
       </e>
       <e p="BounceShoot.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />
