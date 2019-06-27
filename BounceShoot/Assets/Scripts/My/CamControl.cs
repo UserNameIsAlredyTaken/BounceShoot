@@ -18,6 +18,8 @@ public class CamControl : NetworkBehaviour
     public float camSphereRadius = 0.455f;
 
     public Vector3 fpcPoint = new Vector3(-0.63f, -1.14f, -1.31f);
+
+    public Vector3 camRotation;
     
     private Vector3 camCastOrigin;
     private Vector3 camCastRay;
@@ -32,7 +34,8 @@ public class CamControl : NetworkBehaviour
     {
         cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         cam.transform.parent = transform;
-        cam.transform.localRotation = Quaternion.Inverse(cam.transform.parent.rotation);
+//        cam.transform.localRotation = Quaternion.Inverse(cam.transform.parent.rotation);
+        cam.transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
         defaultCullingMask = cam.cullingMask;
     }
 
@@ -74,8 +77,8 @@ public class CamControl : NetworkBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Debug.DrawLine(transform.position, transform.position + camCastOrigin * camCastOriginDistance);
-        Debug.DrawLine(transform.position + camCastOrigin * camCastOriginDistance, transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance);
+        Debug.DrawLine(transform.position, transform.position + camCastOrigin * camCastOriginDistance, Color.red);
+        Debug.DrawLine(transform.position + camCastOrigin * camCastOriginDistance, transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance, Color.red);
         Gizmos.DrawWireSphere(transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance, camSphereRadius);
     }
 }
