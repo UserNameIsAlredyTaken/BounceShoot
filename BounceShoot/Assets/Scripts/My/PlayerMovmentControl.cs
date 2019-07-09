@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PlayerMovmentControl : NetworkBehaviour
+public class PlayerMovmentControl : MonoBehaviour
 {
     
-    public GameObject m_CamPerent;
-    public GameObject m_CamPosition;
     public float m_Speed = 10f;
     public float m_TurnSpeed = 180f;
     public float m_JumpSpeed = 10f;
@@ -22,11 +20,11 @@ public class PlayerMovmentControl : NetworkBehaviour
     private const int LOCAL_PLAYER_LAYER = 10;
     
 
-    public override void OnStartLocalPlayer()
-    {
-        ChangeLayersRecursively(transform, LOCAL_PLAYER_LAYER);
-        GetComponent<MeshRenderer>().material.color = Color.blue;
-    }
+//    public override void OnStartLocalPlayer()
+//    {
+//        ChangeLayersRecursively(transform, LOCAL_PLAYER_LAYER);
+//        GetComponent<MeshRenderer>().material.color = Color.blue;
+//    }
 
     private void Awake()
     {
@@ -41,13 +39,11 @@ public class PlayerMovmentControl : NetworkBehaviour
     }
     
 	void Update () {
-        if (isLocalPlayer)
-        {
-            m_ForwardMovmentValue = Input.GetAxis("Vertical");
-            m_SidewardMovmentValue = Input.GetAxis("Horizontal");
-            m_TurnValue = Input.GetAxis("Mouse X");
-            m_JumpValue = Input.GetButtonDown("Jump");
-        }        
+        m_ForwardMovmentValue = Input.GetAxisRaw("Vertical");
+        m_SidewardMovmentValue = Input.GetAxisRaw("Horizontal");
+        m_TurnValue = Input.GetAxisRaw("Mouse X");
+        m_JumpValue = Input.GetButtonDown("Jump");
+          
 	}
 
     private void FixedUpdate()//Moving and turn the player

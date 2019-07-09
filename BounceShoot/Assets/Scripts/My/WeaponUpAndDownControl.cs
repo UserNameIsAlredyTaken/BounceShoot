@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class WeaponUpAndDownControl : NetworkBehaviour {
+public class WeaponUpAndDownControl : MonoBehaviour {
 
-    public float m_WeaponRaisingSpeed = 180f;
-    public float m_WeaponTurningSpeed = 180f;
-    public float m_TopAngelConstraint = 270f;
-    public float m_BotAngelConstraint = 90f;
+    public float m_WeaponRaisingSpeed = 10f;
+    public float m_TopAngelConstraint = 90f;
+    public float m_BotAngelConstraint = -90f;
 
     private float m_RaisingValue;
     private Transform m_WeaponTransform;
+    private float m_CurrentCumRaise;
     
 
     private void Awake(){
@@ -19,10 +19,7 @@ public class WeaponUpAndDownControl : NetworkBehaviour {
     }
 	
 	private void Update () {
-        if (isLocalPlayer)
-        {
-            m_RaisingValue = -1 * Input.GetAxis("Mouse Y");
-        }
+        m_RaisingValue = Input.GetAxis("Mouse Y");
     }
 
     private void FixedUpdate()
@@ -32,11 +29,11 @@ public class WeaponUpAndDownControl : NetworkBehaviour {
 
     private void Raise()
     {
-        var raiseValue = m_RaisingValue * m_WeaponRaisingSpeed * Time.deltaTime;    
+        var raiseValue = m_RaisingValue * m_WeaponRaisingSpeed;  
+        m_CurrentCumRaise -= raiseValue;
+        m_CurrentCumRaise = Mathf.Clamp(m_CurrentCumRaise, m_BotAngelConstraint, m_TopAngelConstraint);
         
-        if ((raiseValue + m_WeaponTransform.eulerAngles.x) <= m_BotAngelConstraint || (raiseValue + m_WeaponTransform.eulerAngles.x) >= m_TopAngelConstraint) 
-        {
-            m_WeaponTransform.localRotation = Quaternion.Euler(raiseValue + m_WeaponTransform.eulerAngles.x, 0f, 0f);
-        }
+        m_WeaponTransform.localEulerAngles = new Vector3(m_CurrentCumRaise, 0, 0);
+
     }    
 }

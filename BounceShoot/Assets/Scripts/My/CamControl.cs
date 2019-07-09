@@ -4,7 +4,7 @@ using System.Security.AccessControl;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CamControl : NetworkBehaviour
+public class CamControl : MonoBehaviour
 {
     public float maxDistance = 2f;
     public float xCamRay = -1f;
@@ -24,7 +24,7 @@ public class CamControl : NetworkBehaviour
     private Vector3 camCastOrigin;
     private Vector3 camCastRay;
     private float currentHitDistance;
-    private Camera cam;
+    public Camera cam;
     private const int LOCAL_PLAYER_LAYER = 10;
     private const int SHELL_LAYER = 11;
     private int layerMask = ~((1 << LOCAL_PLAYER_LAYER) | (1 << SHELL_LAYER)); //all layers except local player and shells
@@ -32,8 +32,8 @@ public class CamControl : NetworkBehaviour
     
     private void Start()
     {
-        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        cam.transform.parent = transform;
+//        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+//        cam.transform.parent = transform;
 //        cam.transform.localRotation = Quaternion.Inverse(cam.transform.parent.rotation);
         cam.transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
         defaultCullingMask = cam.cullingMask;
