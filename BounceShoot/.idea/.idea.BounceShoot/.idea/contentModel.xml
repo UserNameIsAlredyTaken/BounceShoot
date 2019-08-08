@@ -24,8 +24,11 @@
           <e p="My" t="Include">
             <e p="CamControl.cs" t="Include" />
             <e p="ChildrenComponentHealth.cs" t="Include" />
+            <e p="Climbing.cs" t="Include" />
             <e p="FacingCam.cs" t="Include" />
             <e p="HealthClass.cs" t="Include" />
+            <e p="NewCameraControl.cs" t="Include" />
+            <e p="PlayerColliding.cs" t="Include" />
             <e p="PlayerHealth.cs" t="Include" />
             <e p="PlayerMovmentControl.cs" t="Include" />
             <e p="PlayerSetUp.cs" t="Include" />

@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 
 public class CamControl : MonoBehaviour
 {
+    public Rigidbody _playerBody;
+    public float _maxPlayerSqrVelocity;
     public float maxDistance = 2f;
     public float xCamRay = -1f;
     public float yCamRay = -1.5f;
@@ -21,6 +23,7 @@ public class CamControl : MonoBehaviour
 
     public Vector3 camRotation;
     
+    
     private Vector3 camCastOrigin;
     private Vector3 camCastRay;
     private float currentHitDistance;
@@ -32,9 +35,6 @@ public class CamControl : MonoBehaviour
     
     private void Start()
     {
-//        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-//        cam.transform.parent = transform;
-//        cam.transform.localRotation = Quaternion.Inverse(cam.transform.parent.rotation);
         cam.transform.localRotation = Quaternion.Euler(camRotation.x, camRotation.y, camRotation.z);
         defaultCullingMask = cam.cullingMask;
     }
@@ -51,21 +51,25 @@ public class CamControl : MonoBehaviour
                     + zCamRay * transform.up;
         camCastRay.Normalize();
         
-        RaycastHit hit;
-        if (Physics.SphereCast(transform.position + camCastOrigin * camCastOriginDistance,camSphereRadius, new Vector3(camCastRay.x, camCastRay.y, camCastRay.z), out hit, maxDistance, layerMask))
-        {
-            currentHitDistance = hit.distance;
-        }
-        else
-        {
-            currentHitDistance = maxDistance;
-        }
+//        RaycastHit hit;
+//        if (Physics.SphereCast(transform.position + camCastOrigin * camCastOriginDistance,camSphereRadius, new Vector3(camCastRay.x, camCastRay.y, camCastRay.z), out hit, maxDistance, layerMask))
+//        {
+//            currentHitDistance = hit.distance;
+//        }
+//        else
+//        {
+//            currentHitDistance = maxDistance;
+//        }
+
+
+//        currentHitDistance = Mathf.Lerp(_lerpMin, _lerpMax, _playerBody.velocity.sqrMagnitude / _maxPlayerSqrVelocity);
+        currentHitDistance = maxDistance;
         cam.transform.position = transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance;
 
         //make local player invisible if camera touches it
         if (Physics.CheckSphere(transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance,camSphereRadius, 1 << LOCAL_PLAYER_LAYER))
         {
-            //cam.cullingMask = layerMask;
+//            cam.cullingMask = layerMask;
             cam.transform.localPosition = fpcPoint;
         }
         else
@@ -74,11 +78,11 @@ public class CamControl : MonoBehaviour
         }
     }
     
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Debug.DrawLine(transform.position, transform.position + camCastOrigin * camCastOriginDistance, Color.red);
-        Debug.DrawLine(transform.position + camCastOrigin * camCastOriginDistance, transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance, Color.red);
-        Gizmos.DrawWireSphere(transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance, camSphereRadius);
-    }
+//    private void OnDrawGizmos()
+//    {
+//        Gizmos.color = Color.red;
+//        Debug.DrawLine(transform.position, transform.position + camCastOrigin * camCastOriginDistance, Color.red);
+//        Debug.DrawLine(transform.position + camCastOrigin * camCastOriginDistance, transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance, Color.red);
+//        Gizmos.DrawWireSphere(transform.position + camCastOrigin * camCastOriginDistance + camCastRay * currentHitDistance, camSphereRadius);
+//    }
 }

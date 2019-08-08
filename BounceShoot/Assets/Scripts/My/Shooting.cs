@@ -15,22 +15,34 @@ public class Shooting : NetworkBehaviour {
     private bool m_Fired;
     
 	void Update () {
-        if (isLocalPlayer)
+        if (Input.GetButtonDown(m_FireButton))
         {
-            if (Input.GetButtonDown(m_FireButton))
-            {
-                m_ShootingSource.clip = m_ShootingSound;
-                //m_ShootingSource.Play();
-                CmdFire();
-            }
-        }        
+//            m_ShootingSource.clip = m_ShootingSound;
+//            m_ShootingSource.Play();
+//            CmdFire();
+	        Shoot();
+        }
+	}
+	
+	[Client]
+	private void Shoot()
+	{
+		GameObject shellInstance = Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation);
+		shellInstance.GetComponent<Rigidbody>().velocity = m_ShootingForce * m_FireTransform.up;
+		NetworkServer.Spawn(shellInstance);
 	}
 
-    [Command]
-    private void CmdFire()
-    {
-        GameObject shellInstance = Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation) as GameObject;
-        shellInstance.GetComponent<Rigidbody>().velocity = m_ShootingForce * m_FireTransform.up;
-        NetworkServer.Spawn(shellInstance);
-    }
+//	[Command]
+//	private void CmdPlaerShot(string playerID)
+//	{
+//		Debug.Log(playerID + " has been shot");
+//	}
+
+//    [Command]
+//    private void CmdFire()
+//    {
+//        GameObject shellInstance = Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation) as GameObject;
+//        shellInstance.GetComponent<Rigidbody>().velocity = m_ShootingForce * m_FireTransform.up;
+//        NetworkServer.Spawn(shellInstance);
+//    }
 }

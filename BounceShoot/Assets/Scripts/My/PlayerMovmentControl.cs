@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class PlayerMovmentControl : MonoBehaviour
 {
@@ -9,27 +8,22 @@ public class PlayerMovmentControl : MonoBehaviour
     public float m_Speed = 10f;
     public float m_TurnSpeed = 180f;
     public float m_JumpSpeed = 10f;
+   
     
     private Rigidbody m_Rigidbody;
     private float m_ForwardMovmentValue;
     private float m_SidewardMovmentValue;
     private float m_TurnValue;
     private bool m_JumpValue;
-    private float m_DistToGround;
-    private const float RAYCAST_SPHERER_RADIUS = 0.5f;
-    private const int LOCAL_PLAYER_LAYER = 10;
+    private PlayerColliding _colliding;
+    private Climbing _climbing;
     
-
-//    public override void OnStartLocalPlayer()
-//    {
-//        ChangeLayersRecursively(transform, LOCAL_PLAYER_LAYER);
-//        GetComponent<MeshRenderer>().material.color = Color.blue;
-//    }
 
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        m_DistToGround = GetComponent<Collider>().bounds.extents.y;
+        _colliding = GetComponent<PlayerColliding>();
+        _climbing = GetComponent<Climbing>();
     }
 
     private void OnEnable()
@@ -55,8 +49,10 @@ public class PlayerMovmentControl : MonoBehaviour
 
     private void Move()
     {
-        Vector3 movment = (transform.forward * m_ForwardMovmentValue + transform.right * m_SidewardMovmentValue) * m_Speed * Time.deltaTime;
-        m_Rigidbody.MovePosition(m_Rigidbody.position + movment);
+        Vector3 movementForward = !_climbing.isClimbing ? m_ForwardMovmentValue * m_Speed * Time.deltaTime * transform.forward : Vector3.zero; //block forward movement if climbing
+        Vector3 movementSide = m_SidewardMovmentValue * m_Speed * Time.deltaTime * transform.right;
+        Vector3 movementUp = m_Rigidbody.velocity.y * m_Speed * Time.deltaTime * transform.up;
+        m_Rigidbody.MovePosition(m_Rigidbody.position + movementForward + movementSide + movementUp);
     }
 
     private void Turn()
@@ -66,20 +62,30 @@ public class PlayerMovmentControl : MonoBehaviour
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
     }
 
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    
     private void Jump()
     {
-        if (m_JumpValue && isOnFloor())
+        if (m_JumpValue && _colliding.isOnFloor()) //to start jumping
         {
-            m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpSpeed, m_Rigidbody.velocity.z);
+            var velocity = m_Rigidbody.velocity;
+            velocity = new Vector3(velocity.x, m_JumpSpeed, velocity.z);
+            m_Rigidbody.velocity = velocity;
         }
+        else if (Input.GetButton("Jump") && m_Rigidbody.velocity.y > 0) //if we already jumping and still holding the button, jump higher
+        {
+            m_Rigidbody.velocity += Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime * Vector3.up;
+        }
+        else if (m_Rigidbody.velocity.y < 0) //if we falling, fall faster
+        {
+            m_Rigidbody.velocity += Physics2D.gravity.y * fallMultiplier * Time.deltaTime * Vector3.up;
+        }
+        
     }
 
-    private bool isOnFloor()
-    {
-        RaycastHit hitInfo;
-        return Physics.SphereCast(transform.position, RAYCAST_SPHERER_RADIUS, Vector3.down, out hitInfo, m_DistToGround - RAYCAST_SPHERER_RADIUS + 0.1f);
-    }
-
+    
+    
     private static void ChangeLayersRecursively(Transform trans, int layer) 
     {
         trans.gameObject.layer = layer;

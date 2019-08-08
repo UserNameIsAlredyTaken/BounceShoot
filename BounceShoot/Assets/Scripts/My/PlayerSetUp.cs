@@ -27,6 +27,13 @@ public class PlayerSetUp : NetworkBehaviour
                 sceneCam.gameObject.SetActive(false);
             }
         }
+        RegisterPlayer();
+    }
+
+    void RegisterPlayer()
+    {
+        string playerID = "Player_" + GetComponent<NetworkIdentity>().netId;
+        transform.name = playerID;
     }
 
     void DisableComponents()
