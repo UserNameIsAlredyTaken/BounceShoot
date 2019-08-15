@@ -2,6 +2,8 @@
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{0DDAF20D-CB86-72A7-901F-A2330BA30481}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{B1AD170B-5A4C-012F-01DC-D07CA47789D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,6 +14,10 @@ Global
 		{0DDAF20D-CB86-72A7-901F-A2330BA30481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DDAF20D-CB86-72A7-901F-A2330BA30481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DDAF20D-CB86-72A7-901F-A2330BA30481}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AD170B-5A4C-012F-01DC-D07CA47789D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AD170B-5A4C-012F-01DC-D07CA47789D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AD170B-5A4C-012F-01DC-D07CA47789D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AD170B-5A4C-012F-01DC-D07CA47789D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

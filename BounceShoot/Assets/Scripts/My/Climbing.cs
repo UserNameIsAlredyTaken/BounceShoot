@@ -22,7 +22,7 @@ public class Climbing : MonoBehaviour
     private void Update()
     {
         
-        if (_colliding.isHolding() && !_colliding.isOnFloor() && Input.GetButton("Jump"))
+        if (_colliding.IsHolding() && !_colliding.IsOnFloor() && Input.GetButton("Jump"))
         {
             GetComponent<MeshRenderer>().material.color = Color.blue;
             isClimbing = true;
