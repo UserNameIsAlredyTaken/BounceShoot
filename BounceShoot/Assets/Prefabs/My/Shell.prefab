@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 135825232565623216}
   - component: {fileID: 54714728926565780}
   - component: {fileID: 114326926864562326}
-  - component: {fileID: 108958640341076884}
   - component: {fileID: 114414766917671294}
   - component: {fileID: 114732650551469240}
   m_Layer: 11
@@ -104,7 +103,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146168127002418}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 0.0000001
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -126,52 +125,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   m_Platform:
     serializedVersion: 2
     m_Bits: 4096
   m_LifeTime: 2
-  m_Damage: 20
-  m_IsDamaging: 0
-  testColl: {fileID: 136678213863078856, guid: 204ee67294f66b4408a2413c45ef9f7c, type: 3}
---- !u!108 &108958640341076884
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146168127002418}
-  m_Enabled: 0
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.25
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.02
-    m_NormalBias: 0.1
-    m_NearPlane: 0.1
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 1
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
+  m_Damage: 70
+  m_IsDamaging: 1
+  yAxisDamageMultiplier: 0.05
 --- !u!114 &114414766917671294
 MonoBehaviour:
   m_ObjectHideFlags: 0

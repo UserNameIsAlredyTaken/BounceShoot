@@ -97,7 +97,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167369490898540}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7181f0e7b1e4ade4abfef436fe9ce259, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -112,7 +112,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167369490898540}
   serializedVersion: 2
-  m_Mass: 20
+  m_Mass: 1
   m_Drag: 4
   m_AngularDrag: 5
   m_UseGravity: 1
@@ -152,8 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shell: {fileID: 1146168127002418, guid: 0052a52f2a5252d4a8a2bc166d8ce843, type: 3}
   m_FireTransform: {fileID: 4384156024995324}
-  m_ShootingSource: {fileID: 0}
-  m_ShootingSound: {fileID: 8300000, guid: 7c6f8ff4908a6d24a8b41cd0ee4a7a01, type: 3}
   m_ShootingForce: 40
   m_FireButton: Fire1
 --- !u!114 &114461322412024174

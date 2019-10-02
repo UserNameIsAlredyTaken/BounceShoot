@@ -159,6 +159,7 @@
             <e p="PlayerSetUp.cs" t="Include" />
             <e p="ShellScript.cs" t="Include" />
             <e p="Shooting.cs" t="Include" />
+            <e p="TestGO.cs" t="Include" />
             <e p="WeaponUpAndDownControl.cs" t="Include" />
           </e>
           <e p="PanelManager.cs" t="Include" />

@@ -82,9 +82,10 @@ public class PlayerMovmentControl : MonoBehaviour
 
     private void Move()
     {
-        Vector3 movementForward = !_climbing.isClimbing ? m_ForwardMovmentValue * m_Speed * Time.deltaTime * transform.forward : Vector3.zero; //block forward movement if climbing
-        Vector3 movementSide = m_SidewardMovmentValue * m_Speed * Time.deltaTime * transform.right;
-        Vector3 movementUp = m_Rigidbody.velocity.y * m_Speed * Time.deltaTime * transform.up;
+        var transform1 = transform;
+        Vector3 movementForward = !_climbing.isClimbing ? m_ForwardMovmentValue * m_Speed * Time.deltaTime * transform1.forward : Vector3.zero; //block forward movement if climbing
+        Vector3 movementSide = m_SidewardMovmentValue * m_Speed * Time.deltaTime * transform1.right;
+        Vector3 movementUp = m_Rigidbody.velocity.y * m_Speed  * Time.deltaTime * transform1.up;
         m_Rigidbody.MovePosition(m_Rigidbody.position + movementForward + movementSide + movementUp);
     }
 

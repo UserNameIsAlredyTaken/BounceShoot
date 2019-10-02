@@ -9,8 +9,7 @@ public class ShellScript : MonoBehaviour {
     public float m_Damage = 20;
     public bool m_IsDamaging;
 
-    public Collider testColl;
-    
+    public float yAxisDamageMultiplier;
     
     void Start () {
         Destroy(gameObject, m_LifeTime);
@@ -19,31 +18,35 @@ public class ShellScript : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         int colliderLayerMask = (int)Mathf.Pow(2, collision.gameObject.layer);//get the LayerMask number of the collider
-        if (colliderLayerMask == m_PlayerLayer.value)
+        if (collision.rigidbody != null/* && collision.gameObject.layer != m_PlayerLayer.value*/)
         {
+            Debug.Log("DAMAGEEEE1");
             if (m_IsDamaging)
             {
-                collision.gameObject.GetComponent<HealthClass>().TakeDamage(m_Damage);
+                Vector3 damageDirection = collision.transform.position - transform.position;
+                Debug.Log(collision.gameObject.name);
+                collision.gameObject.GetComponent<Rigidbody>().velocity += new Vector3(damageDirection.x, damageDirection.y * yAxisDamageMultiplier, damageDirection.z) * m_Damage;
             }
             Destroy(gameObject);
         }
-        else if(colliderLayerMask == m_Platform)//make bullets shoot throught platforms from below
-        {
-            if(collision.collider.bounds.max.y > transform.localPosition.y)
-            {
-                Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider, true);
-            }
-        }
-    }
-
-//    private void OnTriggerEnter(Collider other)
-//    {
-//        int colliderLayerMask = (int)Mathf.Pow(2, other.gameObject.layer);//get the LayerMask number of the collider
+//        int colliderLayerMask = (int)Mathf.Pow(2, collision.gameObject.layer);//get the LayerMask number of the collider
 //        if (colliderLayerMask == m_PlayerLayer.value)
-//        {            
-//            GameObject targetRigidbody = other.gameObject;
-////            targetRigidbody.GetComponent<HealthClass>().TakeDamage(m_Damage);
+//        {
+//            Debug.Log("DAMAGEEEE1");
+//            if (m_IsDamaging)
+//            {
+//                Vector3 damageDirection = collision.transform.position - transform.position;
+//                Debug.Log(collision.gameObject.name);
+//                collision.gameObject.GetComponent<Rigidbody>().velocity += new Vector3(damageDirection.x, damageDirection.y * yAxisDamageMultiplier, damageDirection.z) * m_Damage;
+//            }
 //            Destroy(gameObject);
 //        }
-//    }
+//        else if(colliderLayerMask == m_Platform)//make bullets shoot throught platforms from below
+//        {
+//            if(collision.collider.bounds.max.y > transform.localPosition.y)
+//            {
+//                Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider, true);
+//            }
+//        }
+    }
 }
