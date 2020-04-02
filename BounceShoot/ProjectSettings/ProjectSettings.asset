@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 20
-  productGUID: 00000000000000000000000000000000
+  productGUID: 6707b7b1c876a6240a624e912adc7a9e
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -744,7 +744,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 416fe2d9-2879-43ad-a72f-aaf2d79bced3
   framebufferDepthMemorylessMode: 0
-  projectName: EffectsExamples
+  projectName: BounceShoot
   organizationId: usernameisalredytaken
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
