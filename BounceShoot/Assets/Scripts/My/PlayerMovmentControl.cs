@@ -49,6 +49,25 @@ public class PlayerMovmentControl : MonoBehaviour
         m_SidewardMovmentValue = Input.GetAxisRaw("Horizontal");
         m_TurnValue = Input.GetAxisRaw("Mouse X");
         m_JumpValue = Input.GetButtonDown("Jump");
+        
+        if(Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("1");
+            var velocity = m_Rigidbody.velocity;
+            velocity = new Vector3(velocity.x, m_JumpSpeed, velocity.z);
+            m_Rigidbody.velocity = velocity;
+            _lastTimeJumped = 0;
+        }
+        else if (Input.GetButton("Jump") && m_Rigidbody.velocity.y > 0) //if we already jumping and still holding the button, jump higher
+        {
+            Debug.Log("2");
+            m_Rigidbody.velocity += Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime * Vector3.up;
+        }
+        else if (m_Rigidbody.velocity.y < 0) //if we falling, fall faster
+        {
+            Debug.Log("3");
+            // m_Rigidbody.velocity += Physics2D.gravity.y * fallMultiplier * Time.deltaTime * Vector3.up;
+        }
 
 //        if (transform.position.y > _maxHightShow)
 //            _maxHightShow = transform.position.y;
@@ -77,7 +96,7 @@ public class PlayerMovmentControl : MonoBehaviour
     {
         Move();
         Turn();
-        Jump();
+        // Jump();
     }
 
     private void Move()
@@ -102,8 +121,10 @@ public class PlayerMovmentControl : MonoBehaviour
     private void Jump()
     {
         _lastTimeJumped += Time.deltaTime;
-        if (m_JumpValue && (_colliding.IsOnFloor() || (_colliding.WasOnFloorNSecAgo(_floorTimeOffset) && _lastTimeJumped > _floorTimeOffset))) //to start jumping
+        // if (m_JumpValue && (_colliding.IsOnFloor() || (_colliding.WasOnFloorNSecAgo(_floorTimeOffset) && _lastTimeJumped > _floorTimeOffset))) //to start jumping
+        if(Input.GetButtonDown("Jump"))
         {
+            Debug.Log("1");
             var velocity = m_Rigidbody.velocity;
             velocity = new Vector3(velocity.x, m_JumpSpeed, velocity.z);
             m_Rigidbody.velocity = velocity;
@@ -111,12 +132,13 @@ public class PlayerMovmentControl : MonoBehaviour
         }
         else if (Input.GetButton("Jump") && m_Rigidbody.velocity.y > 0) //if we already jumping and still holding the button, jump higher
         {
+            Debug.Log("2");
             m_Rigidbody.velocity += Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime * Vector3.up;
         }
         else if (m_Rigidbody.velocity.y < 0) //if we falling, fall faster
         {
-            m_Rigidbody.velocity += Physics2D.gravity.y * fallMultiplier * Time.deltaTime * Vector3.up;
+            Debug.Log("3");
+            // m_Rigidbody.velocity += Physics2D.gravity.y * fallMultiplier * Time.deltaTime * Vector3.up;
         }
-        
     }
 }

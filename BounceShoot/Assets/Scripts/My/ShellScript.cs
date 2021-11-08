@@ -20,11 +20,11 @@ public class ShellScript : MonoBehaviour {
         int colliderLayerMask = (int)Mathf.Pow(2, collision.gameObject.layer);//get the LayerMask number of the collider
         if (collision.rigidbody != null/* && collision.gameObject.layer != m_PlayerLayer.value*/)
         {
-            Debug.Log("DAMAGEEEE1");
+            // Debug.Log("DAMAGEEEE1");
             if (m_IsDamaging)
             {
                 Vector3 damageDirection = collision.transform.position - transform.position;
-                Debug.Log(collision.gameObject.name);
+                // Debug.Log(collision.gameObject.name);
                 collision.gameObject.GetComponent<Rigidbody>().velocity += new Vector3(damageDirection.x, damageDirection.y * yAxisDamageMultiplier, damageDirection.z) * m_Damage;
             }
             Destroy(gameObject);
